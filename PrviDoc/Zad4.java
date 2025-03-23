@@ -8,19 +8,16 @@ public class Zad4 {
     public static int[] dupliranje(int[] a, int n) {
         int m = 2*n;
         int[] b = new int[m];
-
-        for(int i = 0, j = 0; i < a.length; i++) {
+        int j = 0;
+        for(int i = 0; i < a.length; i++) {
             b[j] = a[i];
             b[j+1] = a[i];
             j += 2;
         }
-         //ispis niza b
-         for(int i = 0; i < b.length; i++) {
-            System.out.print(b[i] + " ");
-        }
 
         return b;
     }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -32,8 +29,12 @@ public class Zad4 {
         for(int i = 0; i < a.length; i++) {
             a[i] = scanner.nextInt();
         }
-        System.out.println(dupliranje(a, n));
+        
 
-       
+        int[] b = dupliranje(a, n);
+
+        for(int i = 0; i < b.length; i++) {
+            System.out.print(b[i] + " ");
+        }
     }
 }

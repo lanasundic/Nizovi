@@ -4,27 +4,20 @@
 import java.util.Scanner;
 
 public class Zad8 {
-
-    /*public class Main {
-        public static double pow(double baza, int eksponent) {
-            return Math.pow(baza, eksponent);
-        }
-    }
-    */
-
-    public static float Polinom(float a[], float x) {
-        int stepen = 1;
-        int rezultat = 0;
-
+    public static float Polinom(int a[], float x) {
+        float rezultat = 0;
+        float stepenovano = 1;
         for(int i = 0; i < a.length; i++) {
-
-            if(rezultat < 1) {
+            if(i < 1) {
                 rezultat += a[0];   //da ubacimo u rezultat prvi element, da bi se krenulo od drugog
+                stepenovano = stepenovano * x;
             }
-            rezultat += a[0];
-            rezultat += a[i] * x^stepen;     //kako da stepenujem?
-            stepen++;
+            else {
+                rezultat += a[i] * stepenovano;
+                stepenovano = stepenovano * x;
+            }
         }
+        return rezultat;
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -39,7 +32,8 @@ public class Zad8 {
         }
 
         System.out.println("Unesite x:");
-        int x = scanner.nextInt();
+        float x = scanner.nextInt();
 
+        System.out.println(Polinom(a, x));
     }
 }

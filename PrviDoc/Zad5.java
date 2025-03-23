@@ -4,23 +4,33 @@
 import java.util.Scanner;
 
 public class Zad5 {
+    public static int[][] ParniINeparniElementi(int[] a) {
+        int j = 0, k = 0;
 
-    public static int[][] ParniINeparniElementi(int[] a, int n) {
-        int m = n/2;
-        int s = n/2;
-        int[] b = new int[m];
-        int[] c = new int[s];
-
-        for(int i = 0, j = 0, l = 0; i < a.length; i++) {
-            if(a[i] % 2 == 0) {
-                b[j] = a[i];
-            } else {
-                c[l] = a[i];
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] % 2 == 0) {
+                j++;
+            }
+            else {
+                k++;
             }
         }
 
-        //kako da sad vratim dva niza?
+        int[] b = new int[j];
+        int[] c = new int[k];
+        int cnt1 = 0, cnt2 = 0;
+
+        for(int i = 0; i < a.length; i++) {
+            if(a[i] % 2 == 0) {
+                b[cnt1++] = a[i];
+            } else {
+                c[cnt2++] = a[i];
+            }
+        }
+        
+        return new int[][] { b, c };
     }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
@@ -31,6 +41,15 @@ public class Zad5 {
         System.out.println("Unesite elemente u nizu:");
         for(int i = 0; i < a.length; i++) {
             a[i] = scanner.nextInt();
+        }
+
+        int[][] rezultat = ParniINeparniElementi(a);
+        
+        for (int i = 0; i < rezultat.length; i++) {
+            for (int j = 0; j < rezultat[i].length; j++) {
+                System.out.print(rezultat[i][j] + " ");
+            }
+            System.out.println();
         }
     }
 }

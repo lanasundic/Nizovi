@@ -1,29 +1,31 @@
-//Napisati funkciju boolean sortiran(int a[]) koji provjerava da li je dati niz sortiran i ako jeste ispisuje u kom poretku je sortiran.
+//Napisati funkciju boolean sortiran(int a[]) koja provjerava da li je dati niz sortiran i ako jeste ispisuje u kom poretku je sortiran.
 
 import java.util.Scanner;
 
 public class Zad7 {
     
     public static boolean sortiran(int a[]) {
-        boolean sort1 = false;
-        boolean sort2 = false;
-        //moramo li  da predpostavimo da niz u rastucem poretku?
-
-        for(int i = 0; i < a.length; i++) {
-            if(a[0] < a[1]) {
-                sort1 = true;
+        boolean sortUp = true;
+        boolean sortDown = true;
+       
+        for(int i = 0; i < a.length - 1; i++) {
+            if(a[i] > a[i + 1]) {
+                sortUp = false;
             }
-            if(a[0] > a[1]) {
-                sort2 = true;
+            if(a[i] < a[i + 1]) {
+                sortDown = false;
             }
         }
-        if(sort1) {
+        if(sortUp) {
             System.out.println("Niz je u rastucem poretku.");
+            return true;
         }
-        if(sort2) {
+        else if(sortDown) {
             System.out.println("Niz je u opadajucem poretku.");
+            return true;
         }
-                return false;   //sta da returnujem kad je boolean, stampa mi se false STALNO
+        else
+            return false;
         
     }
     public static void main(String[] args) {
@@ -37,6 +39,8 @@ public class Zad7 {
         for(int i = 0; i < a.length; i++) {
             a[i] = scanner.nextInt();
         }
-        System.out.println(sortiran(a));
+        boolean sortirano = sortiran(a);
+        if (!sortirano)
+            System.out.println("Nismo dobri...");
     }
 }
